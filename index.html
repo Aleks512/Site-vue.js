@@ -35,7 +35,7 @@
             </div>
         </nav>
 
-        <page-content></page-content>
+        <page-content page-title="Page Title 2" page-content="Page Content 2"></page-content>
     </div>
 
     <script>
@@ -77,10 +77,11 @@
     })
     
     app.component('page-content', {
+        props: ['pageTitle', 'pageContent'],
         template: `
             <div>
-                <h1>Page Title</h1>
-                <p>Page Content</p>
+                <h1>{{pageTitle}}</h1>
+                <p>{{pageContent}}</p>
             </div>
         `   
     } )
