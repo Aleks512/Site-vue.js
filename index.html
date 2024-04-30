@@ -35,9 +35,8 @@
             </div>
         </nav>
 
-        <page-content 
-        :page-title="pages[activePage].pageTitle" 
-        :page-content="pages[activePage].content"
+        <page-content
+         :page = "pages[activePage]"
         >
     </page-content>
     </div>
@@ -81,11 +80,11 @@
     })
     
     app.component('page-content', {
-        props: ['pageTitle', 'pageContent'],
+        props: ['page'],
         template: `
             <div>
-                <h1>{{pageTitle}}</h1>
-                <p>{{pageContent}}</p>
+                <h1>{{page.pageTitle}}</h1>
+                <p>{{page.content}}</p>
             </div>
         `   
     } )
