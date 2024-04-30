@@ -12,12 +12,11 @@
         <navbar
             :pages="pages"
             :active-page="activePage"
-            :theme="theme"
-            :useDarkNavbar="useDarkNavbar"  
-            
-        ></navbar>  
+            :nav-link-click= "(index) => activePage = index"   
+        >
+        </navbar>  
         <page-content
-         :page = "pages[activePage]"
+            :page = "pages[activePage]"
         >
     </page-content>
     </div>
@@ -27,7 +26,6 @@
         data() {
             return {
                 activePage: 0,
-                useDarkNavbar: false,
                 pages: [
                     {
                         link: { text: 'Home', url: 'index.html' },
@@ -60,7 +58,7 @@
         `   
     } )
     app.component('navbar', {
-        props: ['pages', 'useDarkNavbar', 'activePage', 'theme'],
+        props: ['pages', 'activePage', 'navLinkClick'],
         template: `
         <nav class="navbar navbar-expand-lg" :class="[\`navbar-\${theme}\`, \`bg-\${theme}\`, 'navbar', 'navbar-expand-lg']">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -74,7 +72,7 @@
                             :class="{ active: activePage === index }"
                             :href="page.link.url" 
                             :title="\`This link goes to the \${page.link.text} page\`"
-                            @click.prevent="activePage = index">
+                            @click.prevent="navLinkClick(index)">
                             {{ page.link.text }}
                         </a>
                     </li>
