@@ -41,16 +41,20 @@
 
     <script>
     Vue.createApp({
-        data() {
-            return {
-                activePage: 0,
-                useDarkNavbar: false,
-                navbarClasses:{
+        computed:{
+            navbarClasses(){
+                return{
                     'navbar-light': !this.useDarkNavbar,
                     'bg-light': !this.useDarkNavbar,
                     'navbar-dark': this.useDarkNavbar,
                     'bg-dark': this.useDarkNavbar,
-                },
+                }
+            }
+        },
+        data() {
+            return {
+                activePage: 0,
+                useDarkNavbar: false,
                 pages: [
                     {
                         link: { text: 'Home', url: 'index.html' },
