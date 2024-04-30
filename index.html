@@ -35,7 +35,7 @@
             </div>
         </nav>
 
-        <page-content :page-title="'Page Title 2'" page-content="'Page Content 2'"></page-content>
+        <page-content :page-title="pages[activePage].pageTitle" :page-content="pages[activePage].content"></page-content>
     </div>
 
     <script>
