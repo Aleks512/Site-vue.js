@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg" :class="{'navbar-light bg-light': !useDarkNavbar, 'navbar-dark bg-dark': useDarkNavbar}">
+        <nav class="navbar navbar-expand-lg" :class="navbarClasses">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -45,6 +45,10 @@
             return {
                 activePage: 0,
                 useDarkNavbar: false,
+                navbarClasses:{
+                    'navbar-light bg-light': !useDarkNavbar,
+                     'navbar-dark bg-dark': useDarkNavbar
+                },
                 pages: [
                     {
                         link: { text: 'Home', url: 'index.html' },
