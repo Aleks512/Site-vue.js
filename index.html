@@ -9,8 +9,13 @@
 </head>
 <body>
     <div id="app">
-
-
+        <navbar
+            :pages="pages"
+            :active-page="activePage"
+            :theme="theme"
+            :useDarkNavbar="useDarkNavbar"  
+            
+        ></navbar>  
         <page-content
          :page = "pages[activePage]"
         >
@@ -22,7 +27,6 @@
         data() {
             return {
                 activePage: 0,
-                theme: 'dark',
                 useDarkNavbar: false,
                 pages: [
                     {
@@ -43,20 +47,11 @@
                 ]
             };
         },
-        methods : {
-            changeTheme(){
-                let theme = 'light';
-                if(this.theme  == 'light'){
-                    theme = 'dark';
-                }
-
-                this.theme = theme;
-            }
-        },
+     
     })
     
     app.component('page-content', {
-        props: ['page'],
+        props: ['pages', 'activePage'],
         template: `
             <div>
                 <h1>{{page.pageTitle}}</h1>
@@ -65,7 +60,7 @@
         `   
     } )
     app.component('navbar', {
-        props: ['theme', 'useDarkNavbar'],
+        props: ['pages', 'useDarkNavbar', 'activePage', 'theme'],
         template: `
         <nav class="navbar navbar-expand-lg" :class="[\`navbar-\${theme}\`, \`bg-\${theme}\`, 'navbar', 'navbar-expand-lg']">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -89,7 +84,22 @@
                 </form>
             </div>
         </nav>
-        `
+        `,
+        data() {
+            return {
+                theme: 'light'
+            }
+        },
+        methods : {
+            changeTheme(){
+                let theme = 'light';
+                if(this.theme  == 'light'){
+                    theme = 'dark';
+                }
+
+                this.theme = theme;
+            }
+        },
     })
     app.mount('#app');
     </script>
